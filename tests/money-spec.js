@@ -54,6 +54,7 @@ describe('Money-related tests', function () {
     T(1.234, 1.23);
     T(3.555, 3.55);
     T((new Money(10)).dividedBy(3), 3.33);
+    T(9.03, 9.03);
 
   });
 });
