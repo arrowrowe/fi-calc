@@ -1,7 +1,7 @@
 var expect = require('expect.js');
 var Money = require('../libs/money');
 
-describe('Money', function() {
+describe('Pure mathematics tests', function() {
 
   var n = 'null';
   var N = 'NaN';
@@ -30,8 +30,8 @@ describe('Money', function() {
       var a = new Money(rawA);
       var b = new Money(rawB);
       var c = new Money(rawC);
-      expect(a.times(b)).to.eql(c);
-      expect(b.times(a)).to.eql(c);
+      expect(a.times(b).equals(c)).to.be(true);
+      expect(b.times(a).equals(c)).to.be(true);
     }
 
     T(1, '1', '1');
@@ -40,3 +40,21 @@ describe('Money', function() {
   });
 
 });
+
+describe('Money-related tests', function () {
+  it('to cent', function () {
+
+    // a.toCent() === b
+    function T(rawA, rawB) {
+      var a = new Money(rawA);
+      var b = new Money(rawB);
+      expect(a.toCent().equals(b)).to.be(true);
+    }
+
+    T(1.234, 1.23);
+    T(3.555, 3.55);
+    T((new Money(10)).dividedBy(3), 3.33);
+
+  });
+});
+
