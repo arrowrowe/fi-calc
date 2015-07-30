@@ -1,18 +1,14 @@
-# fi-calc [![spm version](http://spmjs.io/badge/fi-calc)](http://spmjs.io/package/fi-calc)
+# fi-calc
 
 ---
 
 Caculation for financial matters.
 
-## Install
+Still in construction, thus no installation provided.
+
+## Test
 
 ```
-$ spm install fi-calc --save
+$ npm test
 ```
 
-## Usage
-
-```js
-var fiCalc = require('fi-calc');
-// use fiCalc
-```
