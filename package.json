@@ -1,0 +1,31 @@
+{
+  "name": "fi-calc",
+  "version": "0.0.0",
+  "description": "Caculation for financial matters.",
+  "keywords": [],
+  "homepage": "",
+  "author": "zhucheng.zc <zhucheng.zc@alibaba-inc.com>",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "licenses": "MIT",
+  "spm": {
+    "main": "index.js",
+    "dependencies": {
+    },
+    "devDependencies": {
+      "expect.js": "0.3.1"
+    }
+  },
+  "devDependencies": {
+    "spm": "3"
+  },
+  "scripts": {
+    "test": "spm test",
+    "build": "spm build"
+  }
+}
