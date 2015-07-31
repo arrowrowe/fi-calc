@@ -59,3 +59,38 @@ describe('Money-related tests', function () {
   });
 });
 
+describe('Money to string', function () {
+
+  // 保存原来的设置状态
+  var option = Money.option();
+
+  // a.toString() === str
+  function T(rawA, str) {
+    var a = new Money(rawA);
+    expect(a.toString()).to.be(str);
+  }
+
+  it('Split by thousand', function () {
+    Money.option({thousand: true, prefix: '', suffix: ''});
+    T(12345, '12,345.00');
+    T(1234567.89, '1,234,567.89');
+    T(123456789, '123,456,789.00');
+  });
+
+  it('Prefix dollar', function () {
+    Money.option({thousand: true, prefix: '$ ', suffix: ''});
+    T(123456, '$ 123,456.00');
+  });
+
+  it('Suffix Yuan', function () {
+    Money.option({thousand: true, prefix: '', suffix: ' Yuan'});
+    T(123456, '123,456.00 Yuan')
+  })
+
+  it('Back to origin', function () {
+    Money.option(option);
+    T(123456, '123456.00');
+  });
+
+});
+

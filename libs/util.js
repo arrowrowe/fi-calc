@@ -2,7 +2,13 @@ var Money = require('./money');
 
 var util = {
   str: function (raw) {
-    return (raw instanceof Money || typeof raw !== 'object') ? raw.toString() : this.strObject(raw);
+    if (raw instanceof Money) {
+      return raw.toString();
+    } else if (typeof raw === 'object') {
+      return this.strObject(raw);
+    } else {
+      return raw;
+    }
   },
   strObject: function (obj) {
     var ret = {};
