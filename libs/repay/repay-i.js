@@ -1,13 +1,13 @@
-// monthly Interest repayment
+// 按月付息, 到期还款 (monthly Interest repayment)
 
 var Money = require('../money');
 var ru = require('./repay-util');
 
-// TODO: 检查并格式化 option
+// 由 repay-util 调用, 保证参数准确
 module.exports = function (option) {
 
   // 本金总额
-  var all = new Money(option.all);
+  var all = option.all;
   // 每期利率
   var rate = option.rate;
   // 期数

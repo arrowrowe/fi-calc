@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var mp = require('../../../libs/repay/mp');
+var fiCalc = require('../../../index');
 
 describe('Matching the principal repayment', function() {
   it('$10000, 0.00345 * 12', function() {
@@ -8,8 +8,8 @@ describe('Matching the principal repayment', function() {
       periodsCount: 12,
       rate: 0.00345
     };
-    var periods = mp(option);
-    expect(periods).to.eql([
+    var report = fiCalc.repay.mp(option);
+    expect(report).to.eql({periods: [
       {number: 1, repayPrincipal: '833.33', repayInterest: '34.5', repay: '867.83'},
       {number: 2, repayPrincipal: '833.33', repayInterest: '31.62', repay: '864.95'},
       {number: 3, repayPrincipal: '833.33', repayInterest: '28.75', repay: '862.08'},
@@ -22,7 +22,7 @@ describe('Matching the principal repayment', function() {
       {number: 10, repayPrincipal: '833.33', repayInterest: '8.62', repay: '841.95'},
       {number: 11, repayPrincipal: '833.33', repayInterest: '5.75', repay: '839.08'},
       {number: 12, repayPrincipal: '833.37', repayInterest: '2.87', repay: '836.24'}
-    ]);
+    ], total: {repayPrincipal: '10000', repayInterest: '224.22', repay: '10224.22'}});
   });
 });
 
