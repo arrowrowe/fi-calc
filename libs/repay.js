@@ -1,3 +1,4 @@
+var util = require('./util');
 var ru = require('./repay/repay-util');
 var repayMethods = {
   mpi: require('./repay/repay-mpi'),
@@ -9,7 +10,7 @@ var getRepayPlan = function (fn, option) {
   ru.formatParam(option);
   var periods = fn(option);
   var report = ru.getReportFromPeriods(periods);
-  return report;
+  return util.str(report);
 };
 
 module.exports = {

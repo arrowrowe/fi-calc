@@ -25,9 +25,8 @@ ru.getPeriod = function (periodMoney, n) {
   } else if (periodMoney.repay === undefined) {
     periodMoney.repay = periodMoney.repayPrincipal.plus(periodMoney.repayInterest);
   }
-  var period = util.str(periodMoney);
-  period.number = n;
-  return period;
+  periodMoney.number = n;
+  return periodMoney;
 };
 
 ru.getReportFromPeriods = function (periods) {
@@ -42,9 +41,8 @@ ru.getReportFromPeriods = function (periods) {
     totalMoney.repayInterest = totalMoney.repayInterest.plus(period.repayInterest);
     totalMoney.repay = totalMoney.repay.plus(period.repay);
   }
-  var total = util.str(totalMoney);
   return {
-    total: total,
+    total: totalMoney,
     periods: periods
   };
 };

@@ -1,11 +1,16 @@
+var Money = require('./money');
+
 var util = {
-  str: function (obj) {
+  str: function (raw) {
+    return (raw instanceof Money || typeof raw !== 'object') ? raw.toString() : this.strObject(raw);
+  },
+  strObject: function (obj) {
     var ret = {};
     for (var key in obj) {
-      ret[key] = obj[key].toString();
+      ret[key] = this.str(obj[key]);
     }
     return ret;
-  }
+  },
 };
 
 module.exports = util;
