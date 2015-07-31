@@ -2,7 +2,7 @@
 
 ---
 
-## Repayment plan report
+## 还款计划
 
 ```javascript
 var fiCalc = require('fi-calc');
@@ -25,5 +25,23 @@ var report = fn(option);
     total: {repayPrincipal: ..., repayInterest: ..., repay: ...}
    }
  */
+```
+
+## 字符串格式化
+
+```javascript
+var fiCalc = require('fi-calc');
+var Money = fiCalc.Money;
+
+Money.option({
+ thousand: true,  // 是否按千分位加逗号
+ prefix: '$ ',    // 前缀
+ suffix: ''       // 后缀
+});
+
+var value = new Money(123456.7);
+
+value.toString(); // '$ 123,456.70'
+
 ```
 
