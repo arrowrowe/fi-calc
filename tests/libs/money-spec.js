@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var Money = require('../libs/money');
+var Money = require('../../libs/money');
 
 describe('Pure mathematics tests', function() {
 

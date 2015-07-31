@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var mpi = require('../libs/repay/mpi');
+var mpi = require('../../../libs/repay/mpi');
 
 describe('Matching the repayment of principal and interest', function() {
   it('$10000, 0.00345 * 12', function() {

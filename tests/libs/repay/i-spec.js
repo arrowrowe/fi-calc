@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var ri = require('../libs/repay/i');
+var ri = require('../../../libs/repay/i');
 
 describe('Monthly interest repayment', function() {
   it('$10000, 0.00345 * 12', function() {

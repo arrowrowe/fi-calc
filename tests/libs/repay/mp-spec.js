@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var mp = require('../libs/repay/mp');
+var mp = require('../../../libs/repay/mp');
 
 describe('Matching the principal repayment', function() {
   it('$10000, 0.00345 * 12', function() {
