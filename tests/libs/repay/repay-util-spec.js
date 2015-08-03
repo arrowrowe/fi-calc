@@ -1,9 +1,9 @@
 var expect = require('expect.js');
 var ru = require('../../../libs/repay/repay-util');
 
-describe('Repay util', function () {
+describe('还款计划(辅助函数)', function () {
 
-  it('Format parameters', function () {
+  it('校验参数', function () {
 
     function T(option, handle) {
       expect(function () {

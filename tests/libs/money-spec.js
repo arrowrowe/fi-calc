@@ -1,13 +1,13 @@
 var expect = require('expect.js');
 var Money = require('../../index').Money;
 
-describe('Pure mathematics tests', function() {
+describe('底层数学', function() {
 
   var n = 'null';
   var N = 'NaN';
   var I = 'Infinity';
 
-  it('plus', function() {
+  it('加', function() {
 
     // a + b === c
     function T(rawA, rawB, rawC) {
@@ -24,7 +24,7 @@ describe('Pure mathematics tests', function() {
 
   });
 
-  it('minus', function () {
+  it('减', function () {
 
     // a - b === c
     function T(rawA, rawB, rawC) {
@@ -38,7 +38,7 @@ describe('Pure mathematics tests', function() {
 
   });
 
-  it('times', function() {
+  it('乘', function() {
 
     // a * b === c
     function T(rawA, rawB, rawC) {
@@ -54,7 +54,7 @@ describe('Pure mathematics tests', function() {
 
   });
 
-  it('dividedBy', function () {
+  it('除', function () {
 
     // a / b === c
     function T(rawA, rawB, rawC) {
@@ -70,7 +70,7 @@ describe('Pure mathematics tests', function() {
 
 });
 
-describe('Money-related basic tests', function () {
+describe('金融相关基础函数', function () {
   it('to cent', function () {
 
     // a.toCent() === b
@@ -88,7 +88,7 @@ describe('Money-related basic tests', function () {
   });
 });
 
-describe('Money to string', function () {
+describe('金融字符串格式化', function () {
 
   // 保存原来的设置状态
   var option = Money.option();
@@ -99,24 +99,24 @@ describe('Money to string', function () {
     expect(a.toString()).to.be(str);
   }
 
-  it('Split by thousand', function () {
+  it('千分', function () {
     Money.option({thousand: true, prefix: '', suffix: ''});
     T(12345, '12,345.00');
     T(1234567.89, '1,234,567.89');
     T(123456789, '123,456,789.00');
   });
 
-  it('Prefix dollar', function () {
+  it('美元前缀', function () {
     Money.option({thousand: true, prefix: '$ ', suffix: ''});
     T(123456, '$ 123,456.00');
   });
 
-  it('Suffix Yuan', function () {
+  it('元后缀', function () {
     Money.option({thousand: true, prefix: '', suffix: ' Yuan'});
     T(123456, '123,456.00 Yuan')
   })
 
-  it('Back to origin', function () {
+  it('返回初始设定', function () {
     Money.option(option);
     T(123456, '123456.00');
   });
