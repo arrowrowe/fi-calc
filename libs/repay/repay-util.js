@@ -6,11 +6,10 @@ var ru = {};
 // 如果参数有错, 这里会抛出异常
 ru.formatParam = function (option) {
   option.all = new Money(option.all);
-  if (typeof option.rate !== 'number' || option.rate < 0) {
-    throw 'Non-negative number option.rate required.';
-  }
-  if (typeof option.periodsCount !== 'number' || option.periodsCount <= 0  || !/^\d+$/.test(option.periodsCount.toString())) {
-    throw 'Positive integer option.periodsCount required.';
+  if (option.ratePerYear !== undefined) {
+    option.periodsPerYear = option.periodsPerYear || 12;
+    option.ratePerPeriod = new Money(option.ratePerYear).dividedBy(option.periodsPerYear);
+    option.periodsCount = option.yearsCount * option.periodsPerYear;
   }
   return option;
 };

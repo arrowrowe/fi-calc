@@ -9,7 +9,7 @@ module.exports = function (option) {
   // 本金总额
   var all = option.all;
   // 每期利率
-  var rate = option.rate;
+  var rate = option.ratePerPeriod;
   // 期数
   var periodsCount = option.periodsCount;
 
