@@ -1,7 +1,7 @@
 var expect = require('expect.js');
 var fiCalc = require('../../../index');
 
-describe('Matching the repayment of principal and interest', function() {
+describe('Repay-plan: Matching the repayment of principal and interest', function() {
   it('$10000, 0.00345 * 12', function() {
     var option = {
       all: 10000,

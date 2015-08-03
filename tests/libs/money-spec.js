@@ -20,6 +20,21 @@ describe('Pure mathematics tests', function() {
 
     T(1, 0, 1);
     T(1, -0, 1);
+    T(1.11, 8.89, 10);
+
+  });
+
+  it('minus', function () {
+
+    // a - b === c
+    function T(rawA, rawB, rawC) {
+      var a = new Money(rawA);
+      var b = new Money(rawB);
+      var c = new Money(rawC);
+      expect(a.minus(b).equals(c)).to.be(true);
+    }
+
+    T(-2, -2, 0);
 
   });
 
@@ -39,9 +54,23 @@ describe('Pure mathematics tests', function() {
 
   });
 
+  it('dividedBy', function () {
+
+    // a / b === c
+    function T(rawA, rawB, rawC) {
+      var a = new Money(rawA);
+      var b = new Money(rawB);
+      var c = new Money(rawC);
+      expect(a.dividedBy(b).equals(c)).to.be(true);
+    }
+
+    T('123456789', 100, '1234567.89');
+
+  });
+
 });
 
-describe('Money-related tests', function () {
+describe('Money-related basic tests', function () {
   it('to cent', function () {
 
     // a.toCent() === b
