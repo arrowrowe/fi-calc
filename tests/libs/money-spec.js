@@ -14,8 +14,8 @@ describe('Pure mathematics tests', function() {
       var a = new Money(rawA);
       var b = new Money(rawB);
       var c = new Money(rawC);
-      expect(a.plus(b)).to.eql(c);
-      expect(b.plus(a)).to.eql(c);
+      expect(a.plus(b).equals(c)).to.be(true);
+      expect(b.plus(a).equals(c)).to.be(true);
     }
 
     T(1, 0, 1);

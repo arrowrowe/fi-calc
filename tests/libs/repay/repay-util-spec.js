@@ -11,7 +11,6 @@ describe('Repay util', function () {
       }).to.throwError(handle);
     }
 
-    T({}, /new Decimal\(\) not a number/);
     T({all: 10000, periodsCount: 12}, /rate/);
     T({all: 10000, rate: 0.00345}, /periodsCount/);
 

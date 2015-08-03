@@ -1,11 +1,7 @@
-// 输入值可能为 number 或 string, 返回值应适合计算.
-// 如果需要更换依赖的数学库, 应只需修改本文件.
+// 底层数学库的依赖写在 decimal 中, 这里再封装一层金融字符串格式化.
+// 如果需要更换依赖的数学库, 应不需修改本文件.
 
-var Money = require('decimal.js');
-
-Money.prototype.toCent = function () {
-  return this.times(100).floor().dividedBy(100);
-};
+var Money = require('./decimal');
 
 var _option = {
   thousand: false,
@@ -27,7 +23,7 @@ Money.option = function (option) {
 };
 
 Money.prototype.toString = function () {
-  var middle = this.toCent().toFixed(2);
+  var middle = this.toCentString();
   if (_option.thousand) {
     middle = middle.replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
   }
