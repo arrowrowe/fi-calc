@@ -36,8 +36,6 @@ module.exports = function (option) {
     repayInterest: principalLeft.times(rate).toCent()
   }, periodsCount));
 
-  // TODO: 返回更多结果
-  // TODO: 可以设置返回值的效果, 比如增加千分位格式化
   return periods;
 
 };
