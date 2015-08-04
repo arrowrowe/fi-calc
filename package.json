@@ -17,7 +17,7 @@
     "main": "index.js",
     "dependencies": {
       "decimal.js": "~3.0.1",
-      "anima-caculate": "~1.0.3"
+      "anima-caculate": "~1.0.4"
     },
     "devDependencies": {
       "expect.js": "0.3.1",
