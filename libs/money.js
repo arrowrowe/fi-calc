@@ -46,7 +46,24 @@ var Decimal = function (val) {
 Decimal.prototype.equals       = function (b) { return new Acal(this.val).sub(b.val || b).val == 0; };
 
 // String
-Decimal.prototype.toCentString = function ()  { return new Acal(this.val).setDecimal(2).val; };
+Decimal.prototype.toCentString = function ()  {
+  var prx = new Acal(this.val);
+  switch (_option.proximate) {
+    case Money.CONST.FLOOR:
+      prx.setDecimal(2);
+      break;
+    case Money.CONST.ROUND:
+    case Money.CONST.CEIL:
+      prx.setDecimal(3);
+      var s = Number(prx.val.substr(-1));
+      prx.setDecimal(2);
+      if ((_option.proximate === Money.CONST.ROUND && s >= 5) || (_option.proximate === Money.CONST.CEIL && s > 0)) {
+        prx.add(0.01);
+      }
+      break;
+  }
+  return prx.val;
+};
 
 // new Decimal
 Decimal.prototype.plus         = function (b) { return new Decimal(new Acal(this.val).add(b.val || b).val); };
@@ -56,7 +73,7 @@ Decimal.prototype.dividedBy    = function (b) { return new Decimal(new Acal(this
 Decimal.prototype.pow = function (n) {
   var a = new Acal(this.val);
   for (var i = 1; i < n; i++) {
-    a.mul(this.val);
+    a.mul(this.val).setDecimal(20);
   }
   return new Decimal(a.val);
 };
