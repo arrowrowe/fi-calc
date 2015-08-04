@@ -1,4 +1,5 @@
 var expect = require('expect.js');
+var tu = require('../test-util');
 var Money = require('../../index').Money;
 
 describe('底层数学', function() {
@@ -71,7 +72,7 @@ describe('底层数学', function() {
 });
 
 describe('金融相关基础函数', function () {
-  it('to cent', function () {
+  it('货币取整', function () {
 
     // a.toCent() === b
     function T(rawA, rawB) {
@@ -84,6 +85,17 @@ describe('金融相关基础函数', function () {
     T(3.555, 3.55);
     T((new Money(10)).dividedBy(3), 3.33);
     T(9.03, 9.03);
+
+    tu.option({proximate: Money.CONST.ROUND}, function () {
+      T(45.344, 45.34);
+      T(1.235, 1.24);
+      T(23456.799, 23456.80);
+    });
+
+    tu.option({proximate: Money.CONST.CEIL}, function () {
+      T(42.232, 42.24);
+      T(999.991, 1000.00);
+    });
 
   });
 });
