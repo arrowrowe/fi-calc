@@ -5,11 +5,20 @@ var ru = {};
 
 // 如果参数有错, 这里会抛出异常
 ru.formatParam = function (option) {
+  if (option.all === undefined) {
+    throw 'Repay-all required';
+  }
   option.all = new Money(option.all);
   if (option.ratePerYear !== undefined) {
     option.periodsPerYear = option.periodsPerYear || 12;
     option.ratePerPeriod = new Money(option.ratePerYear).dividedBy(option.periodsPerYear);
     option.periodsCount = option.yearsCount * option.periodsPerYear;
+  }
+  if (option.ratePerPeriod === undefined) {
+    throw 'Repay-rate required.';
+  }
+  if (option.periodsCount === undefined) {
+    throw 'Repay-periods-count required.';
   }
   return option;
 };
