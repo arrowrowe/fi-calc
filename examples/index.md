@@ -38,6 +38,12 @@ console.log(value.toString());
   <input id="J_RepayYearsCount" type="number" value="5"> 年.
   <button id="J_GetRepayPlan">计算</button>
 </p>
+<p>
+  字符串格式化设置:
+  <input id="J_RepayOptionThousand" type="checkbox" checked> 按千分割;
+  前缀: <input id="J_RepayOptionPrefix" type="text" value="">,
+  后缀: <input id="J_RepayOptionSuffix" type="text" value=" 元">.
+</p>
 <table class="repay-plan">
   <thead><tr><th>期数</th><th>还款本金</th><th>还款利息</th><th>当期还款总额</th></tr></thead>
   <tbody id="J_RepayTable"></tbody>
@@ -75,6 +81,11 @@ render(report);
  */
 
 $('#J_GetRepayPlan').click(function () {
+  fiCalc.Money.option({
+    thousand: $('#J_RepayOptionThousand').attr('checked'),
+    prefix: $('#J_RepayOptionPrefix').val(),
+    suffix: $('#J_RepayOptionSuffix').val()
+  });
   render(fiCalc.repay[$('#J_RepayMethod').val()]({
     all: $('#J_RepayAll').val(),
     ratePerYear: Number($('#J_RepayRatePerYear').val()) / 100,
