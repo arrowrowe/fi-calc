@@ -43,7 +43,7 @@ var Decimal = function (val) {
 };
 
 // Boolean
-Decimal.prototype.equals       = function (b) { return new Acal(this.val).sub(b.val || b).val == 0; };
+Decimal.prototype.equals       = function (b) { return new Acal(this.val).sub(b.val === undefined ? b : b.val).val == 0; };
 
 // String
 Decimal.prototype.toCentString = function ()  {
@@ -66,10 +66,10 @@ Decimal.prototype.toCentString = function ()  {
 };
 
 // new Decimal
-Decimal.prototype.plus         = function (b) { return new Decimal(new Acal(this.val).add(b.val || b).val); };
-Decimal.prototype.minus        = function (b) { return new Decimal(new Acal(this.val).sub(b.val || b).val); };
-Decimal.prototype.times        = function (b) { return new Decimal(new Acal(this.val).mul(b.val || b).val); };
-Decimal.prototype.dividedBy    = function (b) { return new Decimal(new Acal(this.val).div(b.val || b).val); };
+Decimal.prototype.plus         = function (b) { return new Decimal(new Acal(this.val).add(b.val === undefined ? b : b.val).val); };
+Decimal.prototype.minus        = function (b) { return new Decimal(new Acal(this.val).sub(b.val === undefined ? b : b.val).val); };
+Decimal.prototype.times        = function (b) { return new Decimal(new Acal(this.val).mul(b.val === undefined ? b : b.val).val); };
+Decimal.prototype.dividedBy    = function (b) { return new Decimal(new Acal(this.val).div(b.val === undefined ? b : b.val).val); };
 Decimal.prototype.pow = function (n) {
   var a = new Acal(this.val);
   for (var i = 1; i < n; i++) {
