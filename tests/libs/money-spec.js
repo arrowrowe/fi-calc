@@ -121,6 +121,9 @@ describe('金融字符串格式化', function () {
   it('美元前缀', function () {
     Money.option({thousand: true, prefix: '$ ', suffix: ''});
     T(123456, '$ 123,456.00');
+    tu.option({proximate: Money.CONST.ROUND}, function () {
+      T(123456.789, '$ 123,456.79');
+    });
   });
 
   it('元后缀', function () {
