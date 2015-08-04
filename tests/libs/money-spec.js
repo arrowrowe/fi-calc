@@ -95,6 +95,7 @@ describe('金融相关基础函数', function () {
     tu.option({proximate: Money.CONST.CEIL}, function () {
       T(42.232, 42.24);
       T(999.991, 1000.00);
+      T(43.33, 43.33);
     });
 
   });
