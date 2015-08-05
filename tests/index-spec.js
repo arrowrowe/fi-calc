@@ -1,16 +1,18 @@
 var expect = require('expect.js');
-var fiCalc = require('../index');
-var Money = fiCalc.Money;
+var tu = require('./test-util');
 
-describe('fiCalc', function() {
-
-  it('引用和配置', function() {
-    Money.option({
-      thousand: false,
-      prefix: '',
-      suffix: '',
-      proximate: Money.CONST.FLOOR
+tu.judge(function (prefix, fiCalc) {
+  prefix += ': ';
+  var Money = fiCalc.Money;
+  describe(prefix + 'fiCalc', function() {
+    it('引用和配置', function() {
+      Money.option({
+        thousand: false,
+        prefix: '',
+        suffix: '',
+        proximate: Money.CONST.FLOOR
+      });
     });
   });
-
 });
+
