@@ -10,7 +10,7 @@
 
 `NEW` 支持取整方式设置(四舍五入, 去尾, 进一).
 
-依赖 [decimal.js](http://spmjs.io/package/decimal.js), 同时维护了依赖 [anima-caculate](http://spmjs.io/package/anima-caculate) 的版本但未开放.
+底层数学库默认依赖 [anima-caculate](http://spmjs.io/package/anima-caculate), 也可选择依赖 [decimal.js](http://spmjs.io/package/decimal.js).
 
 ## 0.0.0
 
