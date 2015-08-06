@@ -1,6 +1,7 @@
 var fiCalcs = {
   'decimal.js': require('../index-v-decimal'),
-  'anima-caculate': require('../index-v-anima-caculate')
+  'anima-caculate': require('../index-v-anima-caculate'),
+  'bignumber.js': require('../index-v-bignumber.js')
 };
 
 module.exports = {
