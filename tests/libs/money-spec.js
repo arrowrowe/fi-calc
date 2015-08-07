@@ -114,7 +114,7 @@ tu.judge(function (prefix, fiCalc) {
     // a.toString() === str
     function T(rawA, str) {
       var a = new Money(rawA);
-      expect(a.toString()).to.be(str);
+      expect(a.toFinance()).to.be(str);
     }
 
     it('千分', function () {

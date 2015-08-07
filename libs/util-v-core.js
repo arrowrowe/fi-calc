@@ -2,7 +2,7 @@ module.exports = function (Money) {
   return {
     str: function (raw) {
       if (raw instanceof Money) {
-        return raw.toString();
+        return raw.toFinance();
       } else if (raw instanceof Array) {
         return this.strArray(raw);
       } else if (typeof raw === 'object') {

@@ -19,8 +19,7 @@ Money.option({
 
 var value = new Money(123456.789);
 
-// '$ 123,456.79'
-console.log(value.toString());
+console.assert(value.toFinance() === '$ 123,456.79');
 ````
 
 

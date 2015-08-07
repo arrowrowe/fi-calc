@@ -30,7 +30,7 @@ module.exports = function (Decimal) {
     }
   };
 
-  Money.prototype.toString = function () {
+  Money.prototype.toFinance = function () {
     var middle = this.toCentString();
     if (_option.thousand) {
       middle = middle.replace(/(\d)(?=(\d{3})+\.)/g, '$1,');

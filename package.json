@@ -18,12 +18,14 @@
     "output": [
       "index-v-anima-caculate.js",
       "index-v-decimal.js",
-      "index-v-bignumber.js"
+      "index-v-bignumber.js",
+      "index-v-big.js"
     ],
     "dependencies": {
       "decimal.js": "~3.0.1",
       "anima-caculate": "~1.0.4",
-      "bignumber.js": "~2.0.0"
+      "bignumber.js": "~2.0.0",
+      "big.js": "~3.1.3"
     },
     "devDependencies": {
       "expect.js": "0.3.1",
