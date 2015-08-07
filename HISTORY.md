@@ -2,6 +2,10 @@
 
 ---
 
+## 1.0.3
+
+完善文档.
+
 ## 1.0.2
 
 `IMPROVED` 底层数学库默认依赖 [big.js](http://spmjs.io/package/big.js).

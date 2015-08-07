@@ -41,10 +41,17 @@ Money.repay.mpi({all: 10000, ratePerYear: 0.0525, yearsCount: 5});
 
 ## Test
 
+命令行测试:
+
 ```
 $ npm test
 ```
 
-## Examples
+访问 [在线测试](http://docs.spmjs.io/fi-calc/latest/tests/runner.html) 或本地执行
 
+```
+$ spm doc
+```
+
+访问 127.0.0.1:8000 的测试页面.
 
