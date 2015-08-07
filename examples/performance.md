@@ -44,10 +44,10 @@ window.jobs = [{
 
 ````javascript
 var packages = [
-  {key: 'big.js', export: require('fi-calc/index-v-big')},
-  {key: 'bignumber.js', export: require('fi-calc/index-v-bignumber')},
-  {key: 'decimal.js', export: require('fi-calc/index-v-decimal')},
-  {key: 'anima-caculate', export: require('fi-calc/index-v-anima-caculate')}
+  {key: 'big.js', export: require('fi-calc/big')},
+  {key: 'bignumber.js', export: require('fi-calc/bignumber')},
+  {key: 'decimal.js', export: require('fi-calc/decimal')},
+  {key: 'anima-caculate', export: require('fi-calc/anima-caculate')}
 ];
 
 var $ = window.$ = require('anima-yocto-lite');
