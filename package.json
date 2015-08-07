@@ -14,11 +14,22 @@
   },
   "licenses": "MIT",
   "spm": {
-    "main": "index.js",
+    "main": "big.js",
+    "output": [
+      "anima-caculate.js",
+      "decimal.js",
+      "bignumber.js",
+      "big.js"
+    ],
     "dependencies": {
+      "decimal.js": "~3.0.1",
+      "anima-caculate": "~1.0.4",
+      "bignumber.js": "~2.0.0",
+      "big.js": "~3.1.5"
     },
     "devDependencies": {
-      "expect.js": "0.3.1"
+      "expect.js": "0.3.1",
+      "anima-yocto-lite": "~1.1.1"
     }
   },
   "devDependencies": {

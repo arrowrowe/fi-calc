@@ -1,0 +1,1 @@
+module.exports = require('./repay-v-core')(require('./util-v-anima-caculate'), require('./repay/repay-util-v-anima-caculate'), require('./repay/repay-mpi-v-anima-caculate'), require('./repay/repay-mp-v-anima-caculate'), require('./repay/repay-i-v-anima-caculate'));

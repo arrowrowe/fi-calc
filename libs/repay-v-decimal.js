@@ -1,0 +1,1 @@
+module.exports = require('./repay-v-core')(require('./util-v-decimal'), require('./repay/repay-util-v-decimal'), require('./repay/repay-mpi-v-decimal'), require('./repay/repay-mp-v-decimal'), require('./repay/repay-i-v-decimal'));
