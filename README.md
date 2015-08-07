@@ -34,7 +34,10 @@ var Money = fiCalc.Money;
 Money.option({/* 自定义全局配置 */});
 
 // 计算等额本息(MPI)的还款计划
-Money.repay.mpi({all: 10000, ratePerYear: 0.0525, yearsCount: 5});
+fiCalc.repay.mpi({all: 10000, ratePerYear: 0.0525, yearsCount: 5});
+
+// 使用 Money 对象, 支持 plus/minus/times/dividedBy/pow, toCent 和 toFinance 等.
+var x = new Money(1.23);
 ```
 
 详见 [实例](http://docs.spmjs.io/fi-calc/latest/examples/) 和 [性能测试](http://docs.spmjs.io/fi-calc/latest/examples/performance.html).
