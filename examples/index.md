@@ -38,6 +38,14 @@ console.assert(value.toFinance() === '$ 123,456.79');
   <button id="J_GetRepayPlan">计算</button>
 </p>
 <p>
+  利息计算方式设置:
+  <input id="J_RepayOnDay" type="checkbox"> 按日计息
+  <input id="J_RepaySkipFirst" type="checkbox" checked> 按日计息时, 不计第一天利息
+</p>
+<p>
+  计算取整方式: 本金向下取整, 其余四舍五入
+</p>
+<p>
   字符串格式化设置:
   <input id="J_RepayOptionThousand" type="checkbox" checked> 按千分割;
   前缀: <input id="J_RepayOptionPrefix" type="text" value="">,
@@ -88,7 +96,9 @@ $('#J_GetRepayPlan').click(function () {
   render(fiCalc.repay[$('#J_RepayMethod').val()]({
     all: $('#J_RepayAll').val(),
     ratePerYear: Number($('#J_RepayRatePerYear').val()) / 100,
-    yearsCount: Number($('#J_RepayYearsCount').val())
+    yearsCount: Number($('#J_RepayYearsCount').val()),
+    onDay: $('#J_RepayOnDay').attr('checked'),
+    skipFirst: $('#J_RepaySkipFirst').attr('checked')
   }));
 });
 

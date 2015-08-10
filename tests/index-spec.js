@@ -10,7 +10,9 @@ tu.judge(function (prefix, fiCalc) {
         thousand: false,
         prefix: '',
         suffix: '',
-        proximate: Money.CONST.FLOOR
+        proximate: Money.CONST.FLOOR,
+        proximatePrincipal: undefined,
+        proximateInterest: undefined
       });
     });
   });

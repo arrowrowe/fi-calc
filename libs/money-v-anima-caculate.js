@@ -8,9 +8,9 @@ var Decimal = function (val) {
 Decimal.prototype.equals       = function (b) { return new Acal(this.val).sub(b.val === undefined ? b : b.val).val == 0; };
 
 // String
-Decimal.prototype.toCentString = function ()  {
+Decimal.prototype.toCentString = function (proximate)  {
   var prx = new Acal(this.val);
-  switch (Decimal._option.proximate) {
+  switch (proximate !== undefined ? proximate : Decimal._option.proximate) {
     case Decimal.CONST.FLOOR:
       prx.setDecimal(2);
       break;
@@ -39,8 +39,8 @@ Decimal.prototype.pow = function (n) {
   }
   return new Decimal(a.val);
 };
-Decimal.prototype.toCent = function () {
-  return new Decimal(this.toCentString());
+Decimal.prototype.toCent = function (proximate) {
+  return new Decimal(this.toCentString(proximate));
 };
 
 module.exports = require('./money-v-core')(Decimal);

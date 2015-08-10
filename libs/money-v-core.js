@@ -13,7 +13,11 @@ module.exports = function (Decimal) {
     prefix: '',
     suffix: '',
     // 取整方式
-    proximate: Money.CONST.FLOOR
+    // proximatePrincipal 为 undefined 时, 按 proximate.
+    // proximateInterest 同.
+    proximate: Money.CONST.FLOOR,
+    proximatePrincipal: Money.CONST.FLOOR,
+    proximateInterest: undefined
   };
 
   Money.option = function (option) {
@@ -24,6 +28,9 @@ module.exports = function (Decimal) {
         suffix: _option.suffix,
         proximate: _option.proximate
       };
+    }
+    if (typeof option === 'string') {
+      return _option[option];
     }
     for (var key in option) {
       _option[key] = option[key];
