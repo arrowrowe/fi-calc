@@ -1,4 +1,4 @@
-# fi-calc
+# fi-calc [![spm version](http://spmjs.io/badge/fi-calc)](http://spmjs.io/package/fi-calc)
 
 ---
 
