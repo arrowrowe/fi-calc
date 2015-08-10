@@ -14,7 +14,9 @@ Money.option({
   prefix: '$ ',   // 前缀
   suffix: '',     // 后缀
   // 取整方式
-  proximate: Money.CONST.ROUND    // 取整方式, 可选值: ROUND(四舍五入), FLOOR(向下取整), CEIL(向上取整)
+  proximate: Money.CONST.ROUND            // 取整方式, 可选值: ROUND(四舍五入), FLOOR(向下取整), CEIL(向上取整)
+  proximatePrincipal: Money.CONST.FLOOR,  // 可以另行设置计算本金和利息时的取整方式,
+  proximateInterest: undefined            // 设为 undefined 时就以 proximate 为准.
 });
 
 var value = new Money(123456.789);
@@ -70,8 +72,10 @@ var option = {
   // 第二种方式:
   ratePerYear:    0.0525,   // 年利率
   yearsCount:     5,        // 总年数
-  periodsPerYear: 12        // 每年期数, 缺省 12
+  periodsPerYear: 12,       // 每年期数, 缺省 12
   // 两种方式都设置时, 以第二种为准.
+  onDay: false,     // 按日计息, 每个月按当月天数重新计算月利率
+  skipFirst: true   // 仅在开启 onDay 时有意义, 默认 true, 表示不计第一天的利息
 };
 
 // 可用函数: 等额本金(mp), 等额本息(mpi), 按月付息到期还本(i).
