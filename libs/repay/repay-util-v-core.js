@@ -7,6 +7,11 @@ module.exports = function (Money, util) {
       throw 'Repay-all required';
     }
     option.all = new Money(option.all);
+    if (option.ratePerDay !== undefined) {
+      option.ratePerYear = new Money(option.ratePerDay).times(360);
+    } else if (option.ratePerMonth !== undefined) {
+      option.ratePerYear = new Money(option.ratePerMonth).times(12);
+    }
     if (option.ratePerYear !== undefined) {
       option.periodsPerYear = option.periodsPerYear || 12;
       option.ratePerPeriod = new Money(option.ratePerYear).dividedBy(option.periodsPerYear);
