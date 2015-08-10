@@ -15,7 +15,7 @@ tu.judge(function (prefix, fiCalc) {
       }
 
       T({}, /Repay-all/);
-      T({all: 10000}, /Repay-rate/);
+      T({all: 10000, periodsCount: 12}, /Repay-rate/);
       T({all: 10000, ratePerPeriod: 0.00345}, /Repay-periods-count/);
     });
 

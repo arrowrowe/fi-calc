@@ -9,6 +9,16 @@ module.exports = function (Money, util) {
     }
     option.all = new Money(option.all);
 
+    // 每年期数
+    option.periodsPerYear = option.periodsPerYear || 12;
+    // 总期数
+    if (option.yearsCount !== undefined) {
+      option.periodsCount = option.yearsCount * option.periodsPerYear;
+    }
+    if (option.periodsCount === undefined) {
+      throw 'Repay-periods-count required.';
+    }
+
     // 用日利率和月利率计算年利率
     if (option.ratePerDay !== undefined) {
       option.ratePerYear = new Money(option.ratePerDay).times(360);
@@ -17,19 +27,12 @@ module.exports = function (Money, util) {
     }
     // 用年利率计算每期利率
     if (option.ratePerYear !== undefined) {
-      option.periodsPerYear = option.periodsPerYear || 12;
       option.ratePerPeriod = new Money(option.ratePerYear).dividedBy(option.periodsPerYear);
-      option.periodsCount = option.yearsCount * option.periodsPerYear;
     }
 
     // 每期利率
     if (option.ratePerPeriod === undefined) {
       throw 'Repay-rate required.';
-    }
-
-    // 总期数
-    if (option.periodsCount === undefined) {
-      throw 'Repay-periods-count required.';
     }
 
     return option;
