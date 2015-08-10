@@ -1,0 +1,7 @@
+stage:
+  spm-test:
+    unit_test:
+      exec:
+      - "npm test"
+pipeline:
+- spm-test
