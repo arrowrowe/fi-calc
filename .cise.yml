@@ -9,6 +9,6 @@ stage:
       - "PATH=/opt/taobao/node/bin:$PATH tnpm i"
     unit_test:
       exec:
-      - "tnpm test"
+      - "PATH=/opt/taobao/node/bin:$PATH tnpm test"
 pipeline:
 - spm-test
