@@ -7,6 +7,8 @@ stage:
       - "PATH=/opt/taobao/node/bin:$PATH npm i tnpm -g --registry=http://registry.npm.alibaba-inc.com"
       - "PATH=/opt/taobao/node/bin:$PATH tnpm -v"
       - "PATH=/opt/taobao/node/bin:$PATH tnpm i"
+      - "PATH=/opt/taobao/node/bin:$PATH tnpm i spm -g"
+      - "PATH=/opt/taobao/node/bin:$PATH spm i"
     unit_test:
       exec:
       - "PATH=/opt/taobao/node/bin:$PATH tnpm test"
