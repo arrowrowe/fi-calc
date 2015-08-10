@@ -3,26 +3,35 @@ module.exports = function (Money, util) {
 
   // 如果参数有错, 这里会抛出异常
   ru.formatParam = function (option) {
+    // 本金
     if (option.all === undefined) {
       throw 'Repay-all required';
     }
     option.all = new Money(option.all);
+
+    // 用日利率和月利率计算年利率
     if (option.ratePerDay !== undefined) {
       option.ratePerYear = new Money(option.ratePerDay).times(360);
     } else if (option.ratePerMonth !== undefined) {
       option.ratePerYear = new Money(option.ratePerMonth).times(12);
     }
+    // 用年利率计算每期利率
     if (option.ratePerYear !== undefined) {
       option.periodsPerYear = option.periodsPerYear || 12;
       option.ratePerPeriod = new Money(option.ratePerYear).dividedBy(option.periodsPerYear);
       option.periodsCount = option.yearsCount * option.periodsPerYear;
     }
+
+    // 每期利率
     if (option.ratePerPeriod === undefined) {
       throw 'Repay-rate required.';
     }
+
+    // 总期数
     if (option.periodsCount === undefined) {
       throw 'Repay-periods-count required.';
     }
+
     return option;
   };
 
