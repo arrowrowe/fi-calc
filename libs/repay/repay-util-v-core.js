@@ -36,8 +36,11 @@ module.exports = function (Money, util) {
       if (option.skipFirst === undefined) {
         option.skipFirst = true;
       }
+      if (option.beginDate === undefined) {
+        option.beginDate = new Date();
+      }
       // 每期利率按当期数计算
-      option.rates = ru.getRatesByDay(option.ratePerDay, option.periodsCount, option.skipFirst);
+      option.rates = ru.getRatesByDay(option.beginDate, option.ratePerDay, option.periodsCount, option.skipFirst);
     } else {
       // 用日利率和月利率计算年利率
       if (option.ratePerDay !== undefined) {
@@ -90,12 +93,11 @@ module.exports = function (Money, util) {
     };
   };
 
-  ru.getRatesByDay = function (ratePerDay, periodsCount, skipFirst) {
+  ru.getRatesByDay = function (beginDate, ratePerDay, periodsCount, skipFirst) {
     var rates = new Array(periodsCount);
     var rate = new Money(ratePerDay);
-    var date = new Date();
-    var year = date.getYear();
-    var month = date.getMonth();
+    var year = beginDate.getYear();
+    var month = beginDate.getMonth();
     month++;
     rates[0] = rate.times(getDay(year, month) - (skipFirst ? 1 : 0));
     for (var i = 1; i < periodsCount; i++) {

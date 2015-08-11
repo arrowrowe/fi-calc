@@ -128,7 +128,8 @@ tu.judge(function (prefix, fiCalc) {
           all: 1000,
           yearsCount: 1,
           ratePerDay: 0.00045,
-          onDay: true
+          onDay: true,
+          beginDate: new Date('2015/08/11')
         }, {periods: [
           {number: 1, repay: '96.83', repayPrincipal: '83.33', repayInterest: '13.50'},
           {number: 2, repay: '95.71', repayPrincipal: '83.33', repayInterest: '12.38'},
@@ -147,7 +148,8 @@ tu.judge(function (prefix, fiCalc) {
           all: 1,
           yearsCount: 1,
           ratePerDay: 0.00045,
-          onDay: true
+          onDay: true,
+          beginDate: new Date('2015/08/11')
         }, {periods: [
           {number: 1, repay: '0.09', repayPrincipal: '0.08', repayInterest: '0.01'},
           {number: 2, repay: '0.09', repayPrincipal: '0.08', repayInterest: '0.01'},
@@ -166,7 +168,8 @@ tu.judge(function (prefix, fiCalc) {
           all: 2,
           yearsCount: 1,
           ratePerDay: 0.00045,
-          onDay: true
+          onDay: true,
+          beginDate: new Date('2015/08/11')
         }, {periods: [
           {number: 1, repay: '0.19', repayPrincipal: '0.16', repayInterest: '0.03'},
           {number: 2, repay: '0.18', repayPrincipal: '0.16', repayInterest: '0.02'},
