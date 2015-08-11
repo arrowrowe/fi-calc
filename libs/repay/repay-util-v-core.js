@@ -30,7 +30,7 @@ module.exports = function (Money, util) {
         option.ratePerDay = new Money(option.ratePerMonth).dividedBy(30);
       }
       if (option.ratePerDay === undefined) {
-        throw 'Repay-rate-per-year required for on-day mode.';
+        throw 'Repay-rate required.';
       }
       // 默认第一天不计利息
       if (option.skipFirst === undefined) {
