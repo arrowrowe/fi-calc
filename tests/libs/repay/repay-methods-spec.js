@@ -123,7 +123,7 @@ tu.judge(function (prefix, fiCalc) {
         {number: 12, repayPrincipal: '833.37', repayInterest: '2.87', repay: '836.24'}
       ], total: {repayPrincipal: '10000.00', repayInterest: '224.22', repay: '10224.22'}});
 
-      Money.option({proximate: Money.CONST.ROUND, proximatePrincipal: Money.CONST.FLOOR}, function () {
+      Money.optionTmp({proximatePrincipal: Money.CONST.FLOOR, proximateInterest: Money.CONST.ROUND}, function () {
         T(fn, {
           all: 1000,
           yearsCount: 1,
@@ -132,16 +132,16 @@ tu.judge(function (prefix, fiCalc) {
         }, {periods: [
           {number: 1, repay: '96.83', repayPrincipal: '83.33', repayInterest: '13.50'},
           {number: 2, repay: '95.71', repayPrincipal: '83.33', repayInterest: '12.38'},
-          {number: 3, repay: '94.96', repayPrincipal: '83.33', repayInterest: '11.25'},
+          {number: 3, repay: '94.96', repayPrincipal: '83.33', repayInterest: '11.63'},
           {number: 4, repay: '93.46', repayPrincipal: '83.33', repayInterest: '10.13'},
-          {number: 5, repay: '92.63', repayPrincipal: '83.33', repayInterest: '9.00'},
-          {number: 6, repay: '91.47', repayPrincipal: '83.33', repayInterest: '7.88'},
-          {number: 7, repay: '89.86', repayPrincipal: '83.33', repayInterest: '6.75'},
-          {number: 8, repay: '89.14', repayPrincipal: '83.33', repayInterest: '5.63'},
+          {number: 5, repay: '92.63', repayPrincipal: '83.33', repayInterest: '9.30'},
+          {number: 6, repay: '91.47', repayPrincipal: '83.33', repayInterest: '8.14'},
+          {number: 7, repay: '89.86', repayPrincipal: '83.33', repayInterest: '6.53'},
+          {number: 8, repay: '89.14', repayPrincipal: '83.33', repayInterest: '5.81'},
           {number: 9, repay: '87.83', repayPrincipal: '83.33', repayInterest: '4.50'},
-          {number: 10, repay: '86.82', repayPrincipal: '83.33', repayInterest: '3.38'},
+          {number: 10, repay: '86.82', repayPrincipal: '83.33', repayInterest: '3.49'},
           {number: 11, repay: '85.58', repayPrincipal: '83.33', repayInterest: '2.25'},
-          {number: 12, repay: '84.53', repayPrincipal: '83.37', repayInterest: '1.13'}
+          {number: 12, repay: '84.53', repayPrincipal: '83.37', repayInterest: '1.16'}
         ], total: {repay: '1088.82', repayInterest: '88.82', repayPrincipal: '1000.00'}});
         T(fn, {
           all: 1,

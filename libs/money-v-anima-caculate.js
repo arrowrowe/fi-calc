@@ -10,7 +10,8 @@ Decimal.prototype.equals       = function (b) { return new Acal(this.val).sub(b.
 // String
 Decimal.prototype.toCentString = function (proximate)  {
   var prx = new Acal(this.val);
-  switch (proximate !== undefined ? proximate : Decimal._option.proximate) {
+  proximate = proximate !== undefined ? proximate : Decimal._option.proximate;
+  switch (proximate) {
     case Decimal.CONST.FLOOR:
       prx.setDecimal(2);
       break;
@@ -19,7 +20,7 @@ Decimal.prototype.toCentString = function (proximate)  {
       prx.setDecimal(3);
       var s = Number(prx.val.substr(-1));
       prx.setDecimal(2);
-      if ((Decimal._option.proximate === Decimal.CONST.ROUND && s >= 5) || (Decimal._option.proximate === Decimal.CONST.CEIL && s > 0)) {
+      if ((proximate === Decimal.CONST.ROUND && s >= 5) || (proximate === Decimal.CONST.CEIL && s > 0)) {
         prx.add(0.01);
       }
       break;
