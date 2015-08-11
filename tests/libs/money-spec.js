@@ -77,11 +77,11 @@ tu.judge(function (prefix, fiCalc) {
   describe(prefix + '金融相关基础函数', function () {
     it('货币取整', function () {
 
-      // a.toCent() === b
-      function T(rawA, rawB) {
+      // a.toCent(proximate) === b
+      function T(rawA, rawB, proximate) {
         var a = new Money(rawA);
         var b = new Money(rawB);
-        expect(a.toCent().equals(b)).to.be(true);
+        expect(a.toCent(proximate).equals(b)).to.be(true);
       }
 
       T(1.234, 1.23);
@@ -91,15 +91,20 @@ tu.judge(function (prefix, fiCalc) {
 
       Money.optionTmp({proximate: Money.CONST.ROUND}, function () {
         T(45.344, 45.34);
+        T(45.344, 45.35, Money.CONST.CEIL);
         T(1.235, 1.24);
+        T(1.235, 1.23, Money.CONST.FLOOR);
         T(23456.799, 23456.80);
+        T(23456.799, 23456.79, Money.CONST.FLOOR);
       });
 
       return;
 
       Money.optionTmp({proximate: Money.CONST.CEIL}, function () {
         T(42.232, 42.24);
+        T(42.232, 42.23, Money.CONST.ROUND);
         T(999.991, 1000.00);
+        T(999.991, 999.99, Money.CONST.FLOOR);
         T(43.33, 43.33);
       });
 
