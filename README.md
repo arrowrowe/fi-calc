@@ -1,4 +1,18 @@
-# fi-calc [![spm version](http://spmjs.io/badge/fi-calc)](http://spmjs.io/package/fi-calc)
+# fi-calc
+
+---
+
+[![spm version][spm-image]][spm-url]
+[![build status][ci-image]][ci-url]
+[![line coverage][line-coverage-image]][ci-url]
+[![branch coverage][branch-coverage-image]][ci-url]
+
+[spm-image]: http://spmjs.io/badge/fi-calc
+[spm-url]: http://spmjs.io/package/fi-calc
+[ci-image]: http://cise.alibaba-inc.com/task/28232/status.svg
+[ci-url]: http://cise.alibaba-inc.com/task/28232
+[line-coverage-image]: http://cise.alibaba-inc.com/task/28232/ut_line_coverage.svg
+[branch-coverage-image]: http://cise.alibaba-inc.com/task/28232/ut_branch_coverage.svg
 
 ---
 
