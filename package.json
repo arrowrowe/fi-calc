@@ -10,7 +10,8 @@
     "url": "git@gitlab.alibaba-inc.com:zhucheng.zc/fi-calc.git"
   },
   "bugs": {
-    "url": "http://gitlab.alibaba-inc.com/zhucheng.zc/fi-calc/issues"
+    "url": "http://gitlab.alibaba-inc.com/zhucheng.zc/fi-calc/issues",
+    "email": "zhucheng.zc@alipay.com"
   },
   "licenses": "MIT",
   "spm": {
