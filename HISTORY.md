@@ -4,7 +4,7 @@
 
 ## 1.0.5
 
-`NEW` 新增还款计划参数: ratePerDay, ratePerMonth, onDay, skipFirst.
+`NEW` 新增还款计划参数: ratePerDay, ratePerMonth, onDay, skipFirst, beginDate.
 
 `NEW` 取整方式的设置支持 proximatePrincipal 和 proximateInterest 的分别设置.
 
