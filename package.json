@@ -2,15 +2,15 @@
   "name": "fi-calc",
   "version": "1.0.5",
   "description": "Caculation for financial matters.",
-  "keywords": [],
-  "homepage": "",
+  "keywords": ["finance", "calculation"],
+  "homepage": "http://gitlab.alibaba-inc.com/zhucheng.zc/fi-calc",
   "author": "zhucheng.zc <zhucheng.zc@alibaba-inc.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@gitlab.alibaba-inc.com:zhucheng.zc/fi-calc.git"
   },
   "bugs": {
-    "url": ""
+    "url": "http://gitlab.alibaba-inc.com/zhucheng.zc/fi-calc/issues"
   },
   "licenses": "MIT",
   "spm": {
