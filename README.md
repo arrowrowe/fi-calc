@@ -7,8 +7,8 @@
 
 [spm-image]: http://spmjs.io/badge/fi-calc
 [spm-url]: http://spmjs.io/package/fi-calc
-[ci-image]: http://cise.alibaba-inc.com/task/83600/status.svg
-[ci-url]: http://cise.alibaba-inc.com/task/83600
+[ci-image]: https://api.travis-ci.org/arrowrowe/fi-calc.svg?branch=master
+[ci-url]: https://travis-ci.org/arrowrowe/fi-calc
 
 ---
 
