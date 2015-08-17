@@ -2,6 +2,14 @@
 
 ---
 
+## 1.0.6
+
+`NEW` 输出每期还款日, 可设置日期格式.
+
+`NEW` 新增全局参数 doesDiscountAddPrincipal 和还款计划参数 discounts, 可指定某几期的利息折扣.
+
+`CHANGED` 等额本息还款计划末期不保证还款额固定, 优先按利率和未还本金计算利息.
+
 ## 1.0.5
 
 `NEW` 新增还款计划参数: ratePerDay, ratePerMonth, onDay, skipFirst, beginDate.
