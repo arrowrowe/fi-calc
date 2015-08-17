@@ -19,6 +19,7 @@ tu.judge(function (prefix, fiCalc) {
         var b = new Money(rawB);
         var c = new Money(rawC);
         expect(a.plus(b).equals(c)).to.be(true);
+        expect(a.plus(b).equals(rawC)).to.be(true);
         expect(b.plus(a).equals(c)).to.be(true);
       }
 
