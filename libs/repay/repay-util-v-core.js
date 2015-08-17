@@ -67,10 +67,25 @@ module.exports = function (Money, util) {
   };
 
   ru.getPeriod = function (periodMoney, n, option) {
+    var proximateInterest = Money.option('proximateInterest');
     if (periodMoney.repayInterest !== undefined && option.discounts !== undefined && option.discounts[n - 1] !== undefined) {
-      periodMoney.repayInterest = periodMoney.repayInterest.times(option.discounts[n - 1]);
+      var repayInterestDiscounted =  periodMoney.repayInterest.times(option.discounts[n - 1]);
+      if (Money.option('doesDiscountAddPrincipal')) {
+        // 折扣减去的利息用本金补上, 保持还款总额不变.
+        if (periodMoney.repayPrincipal !== undefined) {
+          repayInterestDiscounted = repayInterestDiscounted.toCent(proximateInterest);
+          periodMoney.repayPrincipal = periodMoney.repayPrincipal.plus(periodMoney.repayInterest.toCent().minus(repayInterestDiscounted));
+        }
+      } else {
+        // 还款本金不变, 于是还款总额减少
+        if (periodMoney.repay !== undefined) {
+          repayInterestDiscounted = repayInterestDiscounted.toCent(proximateInterest);
+          periodMoney.repay = periodMoney.repay.minus(periodMoney.repayInterest.toCent().minus(repayInterestDiscounted));
+        }
+      }
+      periodMoney.repayInterest = repayInterestDiscounted;
     }
-    periodMoney.repayInterest = periodMoney.repayInterest.toCent(Money.option('proximateInterest'));
+    periodMoney.repayInterest = periodMoney.repayInterest.toCent(proximateInterest);
     // 利息 (repayInterest) 一定不是还款总额减还款本金得到的.
     // 还款本金和还款总额可以不提供其中一个, 用另两参数加减得到.
     // 最后本应检验判断本金加利息等于总和, 鉴于内部调用, 略去.

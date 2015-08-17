@@ -12,7 +12,8 @@ tu.judge(function (prefix, fiCalc) {
         suffix: '',
         proximate: Money.CONST.FLOOR,
         proximatePrincipal: undefined,
-        proximateInterest: undefined
+        proximateInterest: undefined,
+        doesDiscountAddPrincipal: false
       });
       fiCalc.util.datePattern = undefined;
     });

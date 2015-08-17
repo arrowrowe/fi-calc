@@ -7,6 +7,12 @@ tu.judge(function (prefix, fiCalc) {
   var ru = fiCalc.ru;
   describe(prefix + '还款计划(辅助函数)', function () {
 
+    function expectSubset(p, s) {
+      for (var key in s) {
+        expect(p[key]).to.eql(s[key]);
+      }
+    }
+
     it('参数校验', function () {
       function T(option, handle) {
         expect(function () {
@@ -23,10 +29,7 @@ tu.judge(function (prefix, fiCalc) {
 
     it('参数补全', function () {
       function T(optionOld, optionNew) {
-        ru.formatParam(optionOld);
-        for (var key in optionNew) {
-          expect(optionOld[key]).to.eql(optionNew[key]);
-        }
+        expectSubset(ru.formatParam(optionOld), optionNew);
       }
 
       // 计算每期利率和总期数
@@ -57,6 +60,29 @@ tu.judge(function (prefix, fiCalc) {
         '2016/1/31'
       ]});
       fiCalc.util.datePattern = undefined;
+    });
+
+    it('计算利息折扣', function () {
+
+      function T(periodMoney, discount, periodMoneyDiscounted) {
+        expectSubset(ru.getPeriod({
+          repay: periodMoney.repay === undefined ? undefined : new Money(periodMoney.repay),
+          repayInterest: periodMoney.repayInterest === undefined ? undefined : new Money(periodMoney.repayInterest),
+          repayPrincipal: periodMoney.repayPrincipal === undefined ? undefined : new Money(periodMoney.repayPrincipal)
+        }, 1, {discounts: [discount]}), {
+          repay: new Money(periodMoneyDiscounted.repay),
+          repayInterest: new Money(periodMoneyDiscounted.repayInterest),
+          repayPrincipal: new Money(periodMoneyDiscounted.repayPrincipal)
+        });
+      }
+
+      T({repayInterest: 10, repayPrincipal: 20}, 0.1, {repayInterest: 1, repayPrincipal: 20, repay: 21});
+      T({repayInterest: 10, repay: 30}, 0.1, {repayInterest: 1, repayPrincipal: 20, repay: 21});
+      Money.optionTmp({doesDiscountAddPrincipal: true}, function () {
+        T({repayInterest: 10, repayPrincipal: 20}, 0.1, {repayInterest: 1, repayPrincipal: 29, repay: 30});
+        T({repayInterest: 10, repay: 30}, 0.1, {repayInterest: 1, repayPrincipal: 29, repay: 30});
+      });
+
     });
 
   });

@@ -17,7 +17,9 @@ module.exports = function (Decimal) {
     // proximateInterest 同.
     proximate: Money.CONST.FLOOR,
     proximatePrincipal: Money.CONST.FLOOR,
-    proximateInterest: undefined
+    proximateInterest: undefined,
+    // 利息折扣方式, 比如利息打八折后, 是多还一些本金使还款总额不变, 还是还款总额就此减少
+    doesDiscountAddPrincipal: false
   };
 
   Money.option = function (option) {

@@ -105,7 +105,12 @@ var option = {
   // 两种方式都设置时, 以第二种为准.
   onDay: false,         // 按日计息, 每个月按当月天数重新计算月利率. 需要 ratePerDay, 若设置其他 ratePer*, 同上换算.
   skipFirst: true,      // 仅在开启 onDay 时有意义, 默认 true, 表示不计第一天的利息
-  beginDate: undefined  // 仅在开启 onDay 时有意义, 默认为当天日期 new Date()
+  beginDate: undefined, // 仅在开启 onDay 时有意义, 默认为当天日期 new Date()
+  // 利息折扣, 指定某期利率打折
+  discounts: {
+    2: 0,     // 第三期免息
+    3: 0.8    // 第四期打八折
+  }
   // 更多参数样例参见测试样例.
 };
 
