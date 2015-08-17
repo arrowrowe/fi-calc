@@ -1,1 +1,1 @@
-module.exports = require('./index-v-core')(require('./libs/money-v-anima-caculate'), require('./libs/repay-v-anima-caculate'), require('./libs/repay/repay-util-v-anima-caculate'), {math: 'anima-caculate'});
+module.exports = require('./index-v-core')(require('./libs/money-v-anima-caculate'), require('./libs/util-v-anima-caculate'), require('./libs/repay-v-anima-caculate'), require('./libs/repay/repay-util-v-anima-caculate'), {math: 'anima-caculate'});
