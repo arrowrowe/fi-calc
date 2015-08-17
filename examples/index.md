@@ -19,7 +19,7 @@ Money.option({
   proximateInterest: undefined            // 设为 undefined 时就以 proximate 为准.
 });
 
-fiCalc.util.datePattern = 'YYYY/MM/DD';   // 日期格式, 支持 YYYY, YY, MM, M, DD, D.
+fiCalc.util.datePattern = 'YYYY/MM/DD';   // 这是默认日期格式, 支持 YYYY, YY, MM, M, DD, D.
 
 var value = new Money(123456.789);
 
@@ -44,10 +44,15 @@ console.assert(value.toFinance() === '$ 123,456.79');
 <p>
   利息计算方式设置:
   <input id="J_RepayOnDay" type="checkbox"> 按日计息
-  <input id="J_RepaySkipFirst" type="checkbox" checked> 按日计息时, 不计第一天利息
+  <input id="J_RepaySkipFirst" type="checkbox" checked> 按日计息时, 不计第一天利息;
+  计算取整方式: 本金向下取整, 其余四舍五入
 </p>
 <p>
-  计算取整方式: 本金向下取整, 其余四舍五入
+  起始日期:
+  <input id="J_BeginDate" type="date">,
+  日期格式设置:
+  <input id="J_DatePattern" type="text" value="YYYY/MM/DD">
+  (支持 YYYY, YY, MM, M, DD, D)
 </p>
 <p>
   字符串格式化设置:
@@ -101,7 +106,9 @@ $('#J_GetRepayPlan').click(function () {
     prefix: $('#J_RepayOptionPrefix').val(),
     suffix: $('#J_RepayOptionSuffix').val()
   });
+  fiCalc.util.datePattern = $('#J_DatePattern').val();
   render(fiCalc.repay[$('#J_RepayMethod').val()]({
+    beginDate: new Date($('#J_BeginDate').val()),
     all: $('#J_RepayAll').val(),
     ratePerYear: Number($('#J_RepayRatePerYear').val()) / 100,
     yearsCount: Number($('#J_RepayYearsCount').val()),
