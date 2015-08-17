@@ -28,8 +28,8 @@ tu.judge(function (prefix, fiCalc) {
         {number:9, repay:"852.13", repayInterest:"11.65", repayPrincipal:"840.48"},
         {number:10, repay:"852.13", repayInterest:"8.75", repayPrincipal:"843.38"},
         {number:11, repay:"852.13", repayInterest:"5.84", repayPrincipal:"846.29"},
-        {number:12, repay:"852.13", repayInterest:"2.91", repayPrincipal:"849.22"}
-      ], total: {repay: '10225.56', repayInterest: '225.56', repayPrincipal: '10000.00'}});
+        {number:12, repay:"852.14", repayInterest:"2.92", repayPrincipal:"849.22"}
+      ], total: {repay: '10225.57', repayInterest: '225.57', repayPrincipal: '10000.00'}});
 
       // 商业贷款, 2015年基准利率, 5年期
       Money.optionTmp({proximate: Money.CONST.ROUND}, function () {
@@ -97,8 +97,8 @@ tu.judge(function (prefix, fiCalc) {
           {number:57, repay:'189.86', repayInterest:'3.29', repayPrincipal:'186.57'},
           {number:58, repay:'189.86', repayInterest:'2.47', repayPrincipal:'187.39'},
           {number:59, repay:'189.86', repayInterest:'1.65', repayPrincipal:'188.21'},
-          {number:60, repay:'189.86', repayInterest:'0.84', repayPrincipal:'189.02'}
-        ], total: {repay: '11391.60', repayInterest: '1391.60', repayPrincipal: '10000.00'}});
+          {number:60, repay:'189.85', repayInterest:'0.83', repayPrincipal:'189.02'}
+        ], total: {repay: '11391.59', repayInterest: '1391.59', repayPrincipal: '10000.00'}});
       });
     });
 
@@ -211,6 +211,20 @@ tu.judge(function (prefix, fiCalc) {
         {number: 12, date: '2016/01/31', repayPrincipal: '10000.00', repayInterest: '34.50', repay: '10034.50'}
       ], total: {repayPrincipal: '10000.00', repayInterest: '414.00', repay: '10414.00'}});
       fiCalc.util.datePattern = undefined;
+
+      // 只是用来测试折扣
+      T(fn, {
+        all: 100,
+        periodsCount: 5,
+        ratePerPeriod: 0.1,
+        discounts: [0.5, 0, 0.1]
+      }, {periods: [
+        {number: 1, repayPrincipal: '0.00', repayInterest: '5.00', repay: '5.00'},
+        {number: 2, repayPrincipal: '0.00', repayInterest: '0.00', repay: '0.00'},
+        {number: 3, repayPrincipal: '0.00', repayInterest: '1.00', repay: '1.00'},
+        {number: 4, repayPrincipal: '0.00', repayInterest: '10.00', repay: '10.00'},
+        {number: 5, repayPrincipal: '100.00', repayInterest: '10.00', repay: '110.00'},
+      ], total: {repayPrincipal: '100.00', repayInterest: '26.00', repay: '126.00'}});
 
       Money.optionTmp({proximateInterest: Money.CONST.ROUND}, function () {
         T(fn, {

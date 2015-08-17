@@ -12,7 +12,6 @@ module.exports = function (Money, ru) {
 
     // 取整方式
     var proximatePrincipal = Money.option('proximatePrincipal');
-    var proximateInterest = Money.option('proximateInterest');
 
     // 剩余本金
     var principalLeft = all;
@@ -26,17 +25,17 @@ module.exports = function (Money, ru) {
       rate = option.onDay ? option.rates[n - 1] : option.ratePerPeriod;
       var periodMoney = {
         repayPrincipal: repayPrincipal,
-        repayInterest: principalLeft.times(rate).toCent(proximateInterest)
+        repayInterest: principalLeft.times(rate)
       };
       var period = ru.getPeriod(periodMoney, n, option);
       principalLeft = principalLeft.minus(periodMoney.repayPrincipal)
       periods.push(period);
     }
 
-    rate = option.onDay ? option.rates[n - 1] : option.ratePerPeriod;
+    rate = option.onDay ? option.rates[periodsCount - 1] : option.ratePerPeriod;
     periods.push(ru.getPeriod({
       repayPrincipal: principalLeft,
-      repayInterest: principalLeft.times(rate).toCent(proximateInterest)
+      repayInterest: principalLeft.times(rate)
     }, periodsCount, option));
 
     return periods;

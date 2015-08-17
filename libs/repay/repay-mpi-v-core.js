@@ -22,17 +22,16 @@ module.exports = function (Money, ru) {
     for (var n = 1; n < periodsCount; n++) {
       var periodMoney = {
         repay: repay,
-        repayInterest: principalLeft.times(rate).toCent()
+        repayInterest: principalLeft.times(rate)
       };
       var period = ru.getPeriod(periodMoney, n, option);
       principalLeft = principalLeft.minus(periodMoney.repayPrincipal)
       periods.push(period);
     }
 
-    // TODO: 确认这里逻辑没问题. 这里利息是用总额减本金而不是本金乘利率得到的.
     periods.push(ru.getPeriod({
-      repay: repay,
-      repayPrincipal: principalLeft
+      repayPrincipal: principalLeft,
+      repayInterest: principalLeft.times(rate)
     }, periodsCount, option));
 
     return periods;

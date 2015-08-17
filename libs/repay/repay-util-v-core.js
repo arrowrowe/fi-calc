@@ -66,13 +66,16 @@ module.exports = function (Money, util) {
     return option;
   };
 
-  // 保证还款本金(repayPrincipal), 还款利息(repayInterest), 还款(repay)中至多缺少一个.
-  // (不符合的话必报错)
   ru.getPeriod = function (periodMoney, n, option) {
+    if (periodMoney.repayInterest !== undefined && option.discounts !== undefined && option.discounts[n - 1] !== undefined) {
+      periodMoney.repayInterest = periodMoney.repayInterest.times(option.discounts[n - 1]);
+    }
+    periodMoney.repayInterest = periodMoney.repayInterest.toCent(Money.option('proximateInterest'));
+    // 利息 (repayInterest) 一定不是还款总额减还款本金得到的.
+    // 还款本金和还款总额可以不提供其中一个, 用另两参数加减得到.
+    // 最后本应检验判断本金加利息等于总和, 鉴于内部调用, 略去.
     if (periodMoney.repayPrincipal === undefined) {
       periodMoney.repayPrincipal = periodMoney.repay.minus(periodMoney.repayInterest);
-    } else if (periodMoney.repayInterest === undefined) {
-      periodMoney.repayInterest = periodMoney.repay.minus(periodMoney.repayPrincipal);
     } else if (periodMoney.repay === undefined) {
       periodMoney.repay = periodMoney.repayPrincipal.plus(periodMoney.repayInterest);
     }

@@ -8,15 +8,12 @@ module.exports = function (Money, ru) {
     // 期数
     var periodsCount = option.periodsCount;
 
-    // 取整方式
-    var proximateInterest = Money.option('proximateInterest');
-
     // 每期还款本金
     var repayPrincipal = new Money(0);
     // 每期还款利息
     var repayInterest;
     if (option.ratePerPeriod !== undefined) {
-      repayInterest = all.times(option.ratePerPeriod).toCent(proximateInterest);
+      repayInterest = all.times(option.ratePerPeriod);
     }
     // 期
     var periods = [];
@@ -24,7 +21,7 @@ module.exports = function (Money, ru) {
     // 最后一期单独计算
     for (var n = 1; n < periodsCount; n++) {
       if (option.onDay) {
-        repayInterest = all.times(option.rates[n - 1]).toCent(proximateInterest);
+        repayInterest = all.times(option.rates[n - 1]);
       }
       periods.push(ru.getPeriod({
         repayPrincipal: repayPrincipal,
@@ -33,7 +30,7 @@ module.exports = function (Money, ru) {
     }
 
     if (option.onDay) {
-      repayInterest = all.times(option.rates[n - 1]).toCent(proximateInterest);
+      repayInterest = all.times(option.rates[periodsCount - 1]);
     }
     periods.push(ru.getPeriod({
       repayPrincipal: all,
