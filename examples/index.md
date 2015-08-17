@@ -67,15 +67,17 @@ var option = {
   all: 10000,       // 本金
   // 支持两种参数,
   // 第一种方式:
-  ratePerPeriod:  0.00345,  // 每期利率
+  ratePerPeriod:  0.00345,  // 每期利率, 开启 onDay 时无效
   periodsCount:   12,       // 总期数
   // 第二种方式:
-  ratePerYear:    0.0525,   // 年利率
+  ratePerYear:    0.0525,   // 年利率, 若设置 ratePerDay 或 ratePerMonth, 按 1:30:360 换算.
   yearsCount:     5,        // 总年数
   periodsPerYear: 12,       // 每年期数, 缺省 12
   // 两种方式都设置时, 以第二种为准.
-  onDay: false,     // 按日计息, 每个月按当月天数重新计算月利率
-  skipFirst: true   // 仅在开启 onDay 时有意义, 默认 true, 表示不计第一天的利息
+  onDay: false,         // 按日计息, 每个月按当月天数重新计算月利率. 需要 ratePerDay, 若设置其他 ratePer*, 同上换算.
+  skipFirst: true,      // 仅在开启 onDay 时有意义, 默认 true, 表示不计第一天的利息
+  beginDate: undefined  // 仅在开启 onDay 时有意义, 默认为当天日期 new Date()
+  // 更多参数样例参见测试样例.
 };
 
 // 可用函数: 等额本金(mp), 等额本息(mpi), 按月付息到期还本(i).
