@@ -79,9 +79,8 @@ var J = function (job) {
 
 setTimeout(function () {
   var key = '性能测试(' + RETRY_TIMES.toString() + '遍)';
-  console.time(key);
-  for (var i = 0; i < jobs.length; i++) { J(jobs[i]); }
-  console.timeEnd(key);
+  var t = Date.now(); console.time(key); for (var i = 0; i < jobs.length; i++) { J(jobs[i]); } console.timeEnd(key); t = Date.now() - t;
+  M(key + ': ' + t.toString() + 'ms');
 }, 200);
 ````
 

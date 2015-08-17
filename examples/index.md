@@ -45,14 +45,36 @@ console.assert(value.toFinance() === '$ 123,456.79');
   利息计算方式设置:
   <input id="J_RepayOnDay" type="checkbox"> 按日计息
   <input id="J_RepaySkipFirst" type="checkbox" checked> 按日计息时, 不计第一天利息;
-  计算取整方式: 本金向下取整, 其余四舍五入
+</p>
+<p>
+  计算取整方式:
+  默认
+  <select id="J_Proximate">
+    <option value="round">四舍五入</option>
+    <option value="floor">去尾</option>
+    <option value="ceil">进一</option>
+  </select>,
+  本金
+  <select id="J_ProximatePrincipal">
+    <option value="default">默认</option>
+    <option value="round">四舍五入</option>
+    <option value="floor" selected>去尾</option>
+    <option value="ceil">进一</option>
+  </select>,
+  利息
+  <select id="J_ProximateInterest">
+    <option value="default">默认</option>
+    <option value="round">四舍五入</option>
+    <option value="floor">去尾</option>
+    <option value="ceil">进一</option>
+  </select>.
 </p>
 <p>
   起始日期:
-  <input id="J_BeginDate" type="date">,
+  <input id="J_BeginDate" type="date" value="2015-01-31">,
   日期格式设置:
   <input id="J_DatePattern" type="text" value="YYYY/MM/DD">
-  (支持 YYYY, YY, MM, M, DD, D)
+  (支持 YYYY, YY, MM, M, DD, D).
 </p>
 <p>
   字符串格式化设置:
@@ -101,10 +123,19 @@ render(report);
  */
 
 $('#J_GetRepayPlan').click(function () {
+  var proximateConstants = {
+    default: undefined,
+    round: fiCalc.Money.CONST.ROUND,
+    floor: fiCalc.Money.CONST.FLOOR,
+    ceil: fiCalc.Money.CONST.CEIL
+  };
   fiCalc.Money.option({
     thousand: $('#J_RepayOptionThousand').attr('checked'),
     prefix: $('#J_RepayOptionPrefix').val(),
-    suffix: $('#J_RepayOptionSuffix').val()
+    suffix: $('#J_RepayOptionSuffix').val(),
+    proximate: proximateConstants[$('#J_Proximate').val()],
+    proximatePrincipal: proximateConstants[$('#J_ProximatePrincipal').val()],
+    proximateInterest: proximateConstants[$('#J_ProximateInterest').val()]
   });
   fiCalc.util.datePattern = $('#J_DatePattern').val();
   render(fiCalc.repay[$('#J_RepayMethod').val()]({
