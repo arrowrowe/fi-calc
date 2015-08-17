@@ -45,7 +45,7 @@ module.exports = function (Money) {
       var m = date.getMonth() + delta;
       var d = date.getDate();
       var ret = new Date(y, m, d);
-      if (ret.getMonth() !== m) {
+      if (ret.getMonth() !== (m % 12)) {
         // 举例: 3月31日 -> 2,31 -> 3,31 -> 5月1日 -> 4,0 -> 4月30日
         ret = new Date(y, m + 1, 0);
       }
