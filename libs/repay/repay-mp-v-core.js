@@ -11,7 +11,7 @@ module.exports = function (Money, ru) {
     var periodsCount = option.periodsCount;
 
     // 取整方式
-    var proximatePrincipal = Money.option('proximatePrincipal');
+    var proximatePrincipal = Money._option.proximatePrincipal;
 
     // 剩余本金
     var principalLeft = all;

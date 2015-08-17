@@ -67,10 +67,10 @@ module.exports = function (Money, util) {
   };
 
   ru.getPeriod = function (periodMoney, n, option) {
-    var proximateInterest = Money.option('proximateInterest');
-    if (periodMoney.repayInterest !== undefined && option.discounts !== undefined && option.discounts[n - 1] !== undefined) {
+    var proximateInterest = Money._option.proximateInterest;
+    if (option.discounts !== undefined && option.discounts[n - 1] !== undefined) {
       var repayInterestDiscounted =  periodMoney.repayInterest.times(option.discounts[n - 1]);
-      if (Money.option('doesDiscountAddPrincipal')) {
+      if (Money._option.doesDiscountAddPrincipal) {
         // 折扣减去的利息用本金补上, 保持还款总额不变.
         if (periodMoney.repayPrincipal !== undefined) {
           repayInterestDiscounted = repayInterestDiscounted.toCent(proximateInterest);
@@ -88,11 +88,14 @@ module.exports = function (Money, util) {
     periodMoney.repayInterest = periodMoney.repayInterest.toCent(proximateInterest);
     // 利息 (repayInterest) 一定不是还款总额减还款本金得到的.
     // 还款本金和还款总额可以不提供其中一个, 用另两参数加减得到.
-    // 最后本应检验判断本金加利息等于总和, 鉴于内部调用, 略去.
+    // 若本金和利息和总额都指定了, 会检查是否相等. 实际上内部并不会出现都指定的情况.
     if (periodMoney.repayPrincipal === undefined) {
       periodMoney.repayPrincipal = periodMoney.repay.minus(periodMoney.repayInterest);
     } else if (periodMoney.repay === undefined) {
       periodMoney.repay = periodMoney.repayPrincipal.plus(periodMoney.repayInterest);
+    } else if (!periodMoney.repayInterest.plus(periodMoney.repayPrincipal).equals(periodMoney.repay)) {
+      // 理论上不会出现这个错误, 因为 getPeriod 不应该被外部调用
+      throw '`Repay === principal + interest` does not hold.';
     }
     periodMoney.number = n;
     if (option.dates) {

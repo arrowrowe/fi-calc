@@ -62,7 +62,7 @@ tu.judge(function (prefix, fiCalc) {
       fiCalc.util.datePattern = undefined;
     });
 
-    it('计算利息折扣', function () {
+    it('计算期内利息折扣/本金/还款额', function () {
 
       function T(periodMoney, discount, periodMoneyDiscounted) {
         expectSubset(ru.getPeriod({
@@ -78,10 +78,15 @@ tu.judge(function (prefix, fiCalc) {
 
       T({repayInterest: 10, repayPrincipal: 20}, 0.1, {repayInterest: 1, repayPrincipal: 20, repay: 21});
       T({repayInterest: 10, repay: 30}, 0.1, {repayInterest: 1, repayPrincipal: 20, repay: 21});
+      T({repayInterest: 10, repayPrincipal: 20, repay: 30}, 0.1, {repayInterest: 1, repayPrincipal: 20, repay: 21});
       Money.optionTmp({doesDiscountAddPrincipal: true}, function () {
         T({repayInterest: 10, repayPrincipal: 20}, 0.1, {repayInterest: 1, repayPrincipal: 29, repay: 30});
         T({repayInterest: 10, repay: 30}, 0.1, {repayInterest: 1, repayPrincipal: 29, repay: 30});
+        T({repayInterest: 10, repayPrincipal: 20, repay: 30}, 0.1, {repayInterest: 1, repayPrincipal: 29, repay: 30});
       });
+      expect(function () {
+        ru.getPeriod({repayInterest: new Money(10), repayPrincipal: new Money(20), repay: new Money(40)}, 1, {});
+      }).to.throwError(/`Repay === principal \+ interest` does not hold./);
 
     });
 
