@@ -96,7 +96,7 @@ module.exports = function (Money, util) {
   ru.getRatesByDay = function (beginDate, ratePerDay, periodsCount, skipFirst) {
     var rates = new Array(periodsCount);
     var rate = new Money(ratePerDay);
-    var year = beginDate.getYear();
+    var year = beginDate.getFullYear();
     var month = beginDate.getMonth();
     month++;
     rates[0] = rate.times(getDay(year, month) - (skipFirst ? 1 : 0));
