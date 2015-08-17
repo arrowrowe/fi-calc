@@ -28,7 +28,7 @@ module.exports = function (Money, ru) {
         repayPrincipal: repayPrincipal,
         repayInterest: principalLeft.times(rate).toCent(proximateInterest)
       };
-      var period = ru.getPeriod(periodMoney, n);
+      var period = ru.getPeriod(periodMoney, n, option);
       principalLeft = principalLeft.minus(periodMoney.repayPrincipal)
       periods.push(period);
     }
@@ -37,7 +37,7 @@ module.exports = function (Money, ru) {
     periods.push(ru.getPeriod({
       repayPrincipal: principalLeft,
       repayInterest: principalLeft.times(rate).toCent(proximateInterest)
-    }, periodsCount));
+    }, periodsCount, option));
 
     return periods;
 

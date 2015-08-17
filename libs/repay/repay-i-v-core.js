@@ -29,7 +29,7 @@ module.exports = function (Money, ru) {
       periods.push(ru.getPeriod({
         repayPrincipal: repayPrincipal,
         repayInterest: repayInterest
-      }, n));
+      }, n, option));
     }
 
     if (option.onDay) {
@@ -38,7 +38,7 @@ module.exports = function (Money, ru) {
     periods.push(ru.getPeriod({
       repayPrincipal: all,
       repayInterest: repayInterest
-    }, periodsCount));
+    }, periodsCount, option));
 
     return periods;
 

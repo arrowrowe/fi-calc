@@ -20,6 +20,10 @@ module.exports = function (Money, util) {
       throw 'Repay-periods-count required.';
     }
 
+    if (option.beginDate === undefined) {
+      option.beginDate = new Date();
+    }
+
     if (option.onDay) {
       if (option.periodsPerYear !== 12) {
         throw 'Repay-periods-per-year 12 required for on-day mode.';
@@ -35,9 +39,6 @@ module.exports = function (Money, util) {
       // 默认第一天不计利息
       if (option.skipFirst === undefined) {
         option.skipFirst = true;
-      }
-      if (option.beginDate === undefined) {
-        option.beginDate = new Date();
       }
       // 每期利率按当期数计算
       option.rates = ru.getRatesByDay(option.beginDate, option.ratePerDay, option.periodsCount, option.skipFirst);
@@ -58,12 +59,16 @@ module.exports = function (Money, util) {
       }
     }
 
+    if (util.datePattern !== undefined) {
+      ru.fillRepaymentDates(option);
+    }
+
     return option;
   };
 
   // 保证还款本金(repayPrincipal), 还款利息(repayInterest), 还款(repay)中至多缺少一个.
   // (不符合的话必报错)
-  ru.getPeriod = function (periodMoney, n) {
+  ru.getPeriod = function (periodMoney, n, option) {
     if (periodMoney.repayPrincipal === undefined) {
       periodMoney.repayPrincipal = periodMoney.repay.minus(periodMoney.repayInterest);
     } else if (periodMoney.repayInterest === undefined) {
@@ -72,6 +77,9 @@ module.exports = function (Money, util) {
       periodMoney.repay = periodMoney.repayPrincipal.plus(periodMoney.repayInterest);
     }
     periodMoney.number = n;
+    if (option.dates) {
+      periodMoney.date = option.dates[n - 1];
+    }
     return periodMoney;
   };
 
@@ -109,6 +117,14 @@ module.exports = function (Money, util) {
     function getDay(year, month) {
       return new Date(year, month, 0).getDate();
     }
+  };
+
+  ru.fillRepaymentDates = function (option) {
+    var dates = [];
+    for (var n = 1; n <= option.periodsCount; n++) {
+      dates.push(util.dateFormat(util.incMonth(option.beginDate, n)));
+    }
+    option.dates = dates;
   };
 
   return ru;

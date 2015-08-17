@@ -40,6 +40,23 @@ tu.judge(function (prefix, fiCalc) {
       T({all: 10000, ratePerMonth: 0.0135, yearsCount: 1, onDay: true}, {ratePerDay: new Money(0.00045)});
       // 按日计息时, 默认从当时开始
       expect(ru.formatParam({all: 10000, ratePerDay: 0.00045, yearsCount: 1, onDay: true}).beginDate).to.be.a(Date);
+      // 还款日
+      fiCalc.util.datePattern = 'YYYY/M/DD';
+      T({all: 10000, ratePerDay: 0.00045, yearsCount: 1, beginDate: new Date('2015/01/31')}, {dates: [
+        '2015/2/28',
+        '2015/3/31',
+        '2015/4/30',
+        '2015/5/31',
+        '2015/6/30',
+        '2015/7/31',
+        '2015/8/31',
+        '2015/9/30',
+        '2015/10/31',
+        '2015/11/30',
+        '2015/12/31',
+        '2016/1/31'
+      ]});
+      fiCalc.util.datePattern = undefined;
     });
 
   });

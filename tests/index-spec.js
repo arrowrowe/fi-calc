@@ -14,6 +14,7 @@ tu.judge(function (prefix, fiCalc) {
         proximatePrincipal: undefined,
         proximateInterest: undefined
       });
+      fiCalc.util.datePattern = undefined;
     });
   });
 });

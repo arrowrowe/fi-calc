@@ -14,10 +14,12 @@ Money.option({
   prefix: '$ ',   // 前缀
   suffix: '',     // 后缀
   // 取整方式
-  proximate: Money.CONST.ROUND            // 取整方式, 可选值: ROUND(四舍五入), FLOOR(向下取整), CEIL(向上取整)
+  proximate: Money.CONST.ROUND,           // 取整方式, 可选值: ROUND(四舍五入), FLOOR(向下取整), CEIL(向上取整)
   proximatePrincipal: Money.CONST.FLOOR,  // 可以另行设置计算本金和利息时的取整方式,
   proximateInterest: undefined            // 设为 undefined 时就以 proximate 为准.
 });
+
+fiCalc.util.datePattern = 'YYYY/MM/DD';   // 日期格式, 支持 YYYY, YY, MM, M, DD, D.
 
 var value = new Money(123456.789);
 
@@ -54,7 +56,7 @@ console.assert(value.toFinance() === '$ 123,456.79');
   后缀: <input id="J_RepayOptionSuffix" type="text" value=" 元">.
 </p>
 <table class="repay-plan">
-  <thead><tr><th>期数</th><th>还款本金</th><th>还款利息</th><th>当期还款总额</th></tr></thead>
+  <thead><tr><th>期数</th><th>还款日</th><th>还款本金</th><th>还款利息</th><th>当期还款总额</th></tr></thead>
   <tbody id="J_RepayTable"></tbody>
 </table>
 ````
@@ -113,11 +115,12 @@ function render(report) {
   $('#J_RepayTable').html(report.periods.map(function (period) {
     return '<tr><td>' + [
       period.number.toString(),
+      period.date,
       period.repayPrincipal,
       period.repayInterest,
       period.repay
     ].join('</td><td>') + '</td></tr>'
-  }).join('') + '<tr><td>总计</td><td>' + [
+  }).join('') + '<tr><td colspan="2">总计</td><td>' + [
     report.total.repayPrincipal,
     report.total.repayInterest,
     report.total.repay
