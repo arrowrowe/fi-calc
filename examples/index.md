@@ -16,7 +16,9 @@ Money.option({
   // 取整方式
   proximate: Money.CONST.ROUND,           // 取整方式, 可选值: ROUND(四舍五入), FLOOR(向下取整), CEIL(向上取整)
   proximatePrincipal: Money.CONST.FLOOR,  // 可以另行设置计算本金和利息时的取整方式,
-  proximateInterest: undefined            // 设为 undefined 时就以 proximate 为准.
+  proximateInterest: undefined,           // 设为 undefined 时就以 proximate 为准.
+  // 利息打折时, 是否要增加该期所还本金以保持该期所还总额不变.
+  doesDiscountAddPrincipal: false
 });
 
 fiCalc.util.datePattern = 'YYYY/MM/DD';   // 这是默认日期格式, 支持 YYYY, YY, MM, M, DD, D.
