@@ -10,8 +10,8 @@
 [spm-url]: http://spmjs.io/package/fi-calc
 [ci-image]: https://api.travis-ci.org/arrowrowe/fi-calc.svg?branch=master
 [ci-url]: https://travis-ci.org/arrowrowe/fi-calc
-[coverage-image]: https://coveralls.io/repos/arrowrowe/fi-calc/badge.svg?branch=master&service=github
-[coverage-url]: https://coveralls.io/github/arrowrowe/fi-calc?branch=master
+[coverage-image]: http://codecov.io/github/arrowrowe/fi-calc/coverage.svg?branch=master
+[coverage-url]: http://codecov.io/github/arrowrowe/fi-calc?branch=master
 
 ---
 
