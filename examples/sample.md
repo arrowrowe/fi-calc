@@ -7,6 +7,7 @@
 ````javascript
 var fiCalc = require('fi-calc');
 
+// 等额本金 (Matching the Principal Repayment)
 var report = fiCalc.repay.mp({
   all: 10000,         // 总额 10000 元
   ratePerDay: 0.0005, // 日利率 0.05%
