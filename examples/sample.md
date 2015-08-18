@@ -2,6 +2,23 @@
 
 ---
 
+## 普通还款计划
+
+````javascript
+var fiCalc = require('fi-calc');
+
+var report = fiCalc.repay.mp({
+  all: 10000,         // 总额 10000 元
+  ratePerDay: 0.0005, // 日利率 0.05%
+  onDay: true,        // 按日计息
+  skipFirst: false,   // 第一日也计息
+  yearsCount: 1       // 一年, 默认按12个月
+});
+
+// 输出见控制台
+console.log(report);
+````
+
 ## 组合贷
 
 六加六组合贷, 前六个月按月付息, 后六个月等额本金.
