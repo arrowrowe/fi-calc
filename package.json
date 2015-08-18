@@ -41,7 +41,7 @@
     "spm": "3"
   },
   "scripts": {
-    "test": "spm test && cat ./coverage/lcov.info | ./node_modules/.bin/codecov",
+    "test": "spm test",
     "build": "spm build"
   }
 }
