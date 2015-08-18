@@ -2,7 +2,10 @@
   "name": "fi-calc",
   "version": "1.0.6",
   "description": "Caculation for financial matters.",
-  "keywords": ["finance", "calculation"],
+  "keywords": [
+    "finance",
+    "calculation"
+  ],
   "homepage": "https://github.com/arrowrowe/fi-calc",
   "author": "zhucheng.zc <zhucheng.zc@alibaba-inc.com>",
   "repository": {
@@ -34,10 +37,11 @@
     }
   },
   "devDependencies": {
+    "codecov.io": "^0.1.6",
     "spm": "3"
   },
   "scripts": {
-    "test": "spm test",
+    "test": "spm test && cat ./coverage/lcov.info | ./node_modules/.bin/codecov",
     "build": "spm build"
   }
 }
