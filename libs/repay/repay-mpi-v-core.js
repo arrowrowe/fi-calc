@@ -25,7 +25,7 @@ module.exports = function (Money, ru) {
         repayInterest: principalLeft.times(rate)
       };
       var period = ru.getPeriod(periodMoney, n, option);
-      principalLeft = principalLeft.minus(periodMoney.repayPrincipal)
+      principalLeft = principalLeft.minus(periodMoney.repayPrincipal);
       periods.push(period);
     }
 

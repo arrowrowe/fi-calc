@@ -7,9 +7,11 @@ tu.judge(function (prefix, fiCalc) {
 
   describe(prefix + '底层数学', function() {
 
+    /*
     var n = 'null';
     var N = 'NaN';
     var I = 'Infinity';
+    */
 
     it('加', function() {
 
@@ -99,8 +101,6 @@ tu.judge(function (prefix, fiCalc) {
         T(23456.799, 23456.79, Money.CONST.FLOOR);
       });
 
-      return;
-
       Money.optionTmp({proximate: Money.CONST.CEIL}, function () {
         T(42.232, 42.24);
         T(42.232, 42.23, Money.CONST.ROUND);
@@ -140,8 +140,8 @@ tu.judge(function (prefix, fiCalc) {
 
     it('元后缀', function () {
       Money.option({thousand: true, prefix: '', suffix: ' Yuan'});
-      T(123456, '123,456.00 Yuan')
-    })
+      T(123456, '123,456.00 Yuan');
+    });
 
     it('返回初始设定', function () {
       Money.option(option);

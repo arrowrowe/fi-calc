@@ -8,7 +8,7 @@ tu.judge(function (prefix, fiCalc) {
 
     function T(fn, option, report) {
       expect(fn(option)).to.eql(report);
-    };
+    }
 
     it('等额本息', function() {
       var fn = fiCalc.repay.mpi;
@@ -17,18 +17,18 @@ tu.judge(function (prefix, fiCalc) {
         periodsCount: 12,
         ratePerPeriod: 0.00345
       }, {periods: [
-        {number:1, repay:"852.13", repayInterest:"34.50", repayPrincipal:"817.63"},
-        {number:2, repay:"852.13", repayInterest:"31.67", repayPrincipal:"820.46"},
-        {number:3, repay:"852.13", repayInterest:"28.84", repayPrincipal:"823.29"},
-        {number:4, repay:"852.13", repayInterest:"26.00", repayPrincipal:"826.13"},
-        {number:5, repay:"852.13", repayInterest:"23.15", repayPrincipal:"828.98"},
-        {number:6, repay:"852.13", repayInterest:"20.29", repayPrincipal:"831.84"},
-        {number:7, repay:"852.13", repayInterest:"17.42", repayPrincipal:"834.71"},
-        {number:8, repay:"852.13", repayInterest:"14.54", repayPrincipal:"837.59"},
-        {number:9, repay:"852.13", repayInterest:"11.65", repayPrincipal:"840.48"},
-        {number:10, repay:"852.13", repayInterest:"8.75", repayPrincipal:"843.38"},
-        {number:11, repay:"852.13", repayInterest:"5.84", repayPrincipal:"846.29"},
-        {number:12, repay:"852.14", repayInterest:"2.92", repayPrincipal:"849.22"}
+        {number:1, repay:'852.13', repayInterest:'34.50', repayPrincipal:'817.63'},
+        {number:2, repay:'852.13', repayInterest:'31.67', repayPrincipal:'820.46'},
+        {number:3, repay:'852.13', repayInterest:'28.84', repayPrincipal:'823.29'},
+        {number:4, repay:'852.13', repayInterest:'26.00', repayPrincipal:'826.13'},
+        {number:5, repay:'852.13', repayInterest:'23.15', repayPrincipal:'828.98'},
+        {number:6, repay:'852.13', repayInterest:'20.29', repayPrincipal:'831.84'},
+        {number:7, repay:'852.13', repayInterest:'17.42', repayPrincipal:'834.71'},
+        {number:8, repay:'852.13', repayInterest:'14.54', repayPrincipal:'837.59'},
+        {number:9, repay:'852.13', repayInterest:'11.65', repayPrincipal:'840.48'},
+        {number:10, repay:'852.13', repayInterest:'8.75', repayPrincipal:'843.38'},
+        {number:11, repay:'852.13', repayInterest:'5.84', repayPrincipal:'846.29'},
+        {number:12, repay:'852.14', repayInterest:'2.92', repayPrincipal:'849.22'}
       ], total: {repay: '10225.57', repayInterest: '225.57', repayPrincipal: '10000.00'}});
 
       // 商业贷款, 2015年基准利率, 5年期
@@ -223,7 +223,7 @@ tu.judge(function (prefix, fiCalc) {
         {number: 2, repayPrincipal: '0.00', repayInterest: '0.00', repay: '0.00'},
         {number: 3, repayPrincipal: '0.00', repayInterest: '1.00', repay: '1.00'},
         {number: 4, repayPrincipal: '0.00', repayInterest: '10.00', repay: '10.00'},
-        {number: 5, repayPrincipal: '100.00', repayInterest: '10.00', repay: '110.00'},
+        {number: 5, repayPrincipal: '100.00', repayInterest: '10.00', repay: '110.00'}
       ], total: {repayPrincipal: '100.00', repayInterest: '26.00', repay: '126.00'}});
 
       Money.optionTmp({proximateInterest: Money.CONST.ROUND}, function () {
@@ -245,7 +245,7 @@ tu.judge(function (prefix, fiCalc) {
           {number: 9, repayPrincipal: '0.00', repayInterest: '135.00', repay: '135.00'},
           {number: 10, repayPrincipal: '0.00', repayInterest: '139.50', repay: '139.50'},
           {number: 11, repayPrincipal: '0.00', repayInterest: '135.00', repay: '135.00'},
-          {number: 12, repayPrincipal: '10000.00', repayInterest: '139.50', repay: '10139.50'},
+          {number: 12, repayPrincipal: '10000.00', repayInterest: '139.50', repay: '10139.50'}
         ], total: {repayPrincipal: '10000.00', repayInterest: '1642.50', repay: '11642.50'}});
 
         T(fn, {
@@ -267,7 +267,7 @@ tu.judge(function (prefix, fiCalc) {
           {number: 9, repayPrincipal: '0.00', repayInterest: '135.00', repay: '135.00'},
           {number: 10, repayPrincipal: '0.00', repayInterest: '139.50', repay: '139.50'},
           {number: 11, repayPrincipal: '0.00', repayInterest: '135.00', repay: '135.00'},
-          {number: 12, repayPrincipal: '10000.00', repayInterest: '139.50', repay: '10139.50'},
+          {number: 12, repayPrincipal: '10000.00', repayInterest: '139.50', repay: '10139.50'}
         ], total: {repayPrincipal: '10000.00', repayInterest: '1647.00', repay: '11647.00'}});
 
       });
