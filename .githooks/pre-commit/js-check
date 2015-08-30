@@ -3,5 +3,5 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 DIR_ROOT=${DIR}/../..
 
-(cd ${DIR_ROOT}; eslint .)
+(cd ${DIR_ROOT}; eslint .; jshint --exclude-path .eslintignore .)
 

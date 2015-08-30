@@ -25,9 +25,7 @@ module.exports = {
   // 逐个测试各依赖版本的 fiCalc
   judge: function (fn) {
     for (var key in fiCalcs) {
-      (function (key, fiCalc) {
-        fn(key, fiCalc);
-      })(key, fiCalcs[key]);
+      fn(key, fiCalcs[key]);
     }
   }
 };

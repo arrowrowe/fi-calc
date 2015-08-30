@@ -5,7 +5,7 @@ var Decimal = function (val) {
 };
 
 // Boolean
-Decimal.prototype.equals       = function (b) { return new Acal(this.val).sub(b.val === undefined ? b : b.val).val == 0; };
+Decimal.prototype.equals       = function (b) { return Number(new Acal(this.val).sub(b.val === undefined ? b : b.val).val) === 0; };
 
 // String
 Decimal.prototype.toCentString = function (proximate)  {
