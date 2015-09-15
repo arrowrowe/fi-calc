@@ -1,7 +1,4 @@
 #!/bin/bash
 
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-DIR_ROOT=${DIR}/../..
-
-(cd ${DIR_ROOT}; eslint .; jshint --exclude-path .eslintignore .)
+npm run check
 

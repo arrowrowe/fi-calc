@@ -18,6 +18,7 @@ Thumbs.db
 *.pyo
 .build
 node_modules
+npm-debug.log.*
 _site
 sea-modules
 spm_modules

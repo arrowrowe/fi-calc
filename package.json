@@ -44,6 +44,7 @@
   },
   "scripts": {
     "test": "spm test",
-    "build": "spm build"
+    "build": "spm build",
+    "check": "eslint . && jshint --exclude-path .eslintignore ."
   }
 }
